@@ -30,12 +30,14 @@ this file is only for attribution of ares
 		pins_cmd0_dat {
 			pinmux = <PINMUX_GPIO111__FUNC_GPIO111>;
 			input-enable;
-			bias-disable;
+			bias-pull-up;
+			drive-strength = <2>;
 		};
 		pins_cmd1_dat {
 			pinmux = <PINMUX_GPIO112__FUNC_GPIO112>;
 			input-enable;
-			bias-disable;
+			bias-pull-up;
+			drive-strength = <2>;
 		};
 	};
 
