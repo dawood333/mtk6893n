@@ -27,7 +27,6 @@ jobs:
       - name: Configure Ares K419
         run: make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- ares_k419_defconfig
       - name: Compile Ares device tree
-        run: make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j2 mediatek/ares.dtb
-        working-directory: arch/arm64/boot/dts
+        run: make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j2 arch/arm64/boot/dts/mediatek/ares.dtb
       - name: Verify DTB artifact
         run: test -s arch/arm64/boot/dts/mediatek/ares.dtb
