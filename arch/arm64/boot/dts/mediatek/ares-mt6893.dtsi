@@ -4,6 +4,11 @@ this file is only for attribution of ares
 #include "mediatek/xiaomi-mt6893-common.dtsi"
 #include "mediatek/cust_mt6893_camera.dtsi"
 
+/* Preserve the panel name matched by the Ares K419 panel driver. */
+&chosen {
+	atag,videolfb-lcmname = "k10_42_02_0a_dsc_cmd,lcm";
+};
+
 /* ARES physical game keys and Hall sensors.
  * GPIO assignments and property names follow the known-working ARES DTBO.
  */
