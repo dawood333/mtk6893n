@@ -771,11 +771,11 @@ this file is only for attribution of ares
 	};
 };
 
-&msdc0 {
+&mmc0 {
 	status = "disabled";
 };
 
-&msdc1 {
+&mmc1 {
 	status = "disabled";
 };
 
