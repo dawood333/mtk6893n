@@ -255,66 +255,7 @@
 /* FINGERPRINT end */
 
 #include "mediatek/cust_mt6893_touch.dtsi"
-/*GAMEKEY start*/
-&gamekey {
-    status = "ok";
-    key_left = <&pio 111 0x00>;
-    hall_left = <&pio 4 0x00>;
-    key_right = <&pio 112 0x00>;
-    hall_right = <&pio 5 0x00>;
-    debounce_time = <5>;        /*unit in ms*/
-    pinctrl-names = "gamekey_active", "gamekey_suspend";
-    pinctrl-0 = <&gk_hall_act &gk_key_act>;
-    pinctrl-1 = <&gk_hall_sup &gk_key_sup>;
-};
 
-&pio {
-	gk_hall_act: gk_hall_act {
-		pins_cmd0_dat {
-			pinmux = <PINMUX_GPIO4__FUNC_GPIO4>;
-			input-enable;
-			bias-disable;
-		};
-
-		pins_cmd1_dat {
-			pinmux = <PINMUX_GPIO5__FUNC_GPIO5>;
-			input-enable;
-			bias-disable;
-		};
-	};
-
-	gk_hall_sup: gk_hall_sup {
-	};
-
-	gk_key_act: gk_key_act {
-		pins_cmd0_dat {
-			pinmux = <PINMUX_GPIO111__FUNC_GPIO111>;
-			input-enable;
-			bias-pull-up;
-			drive-strength = <2>;
-		};
-
-		pins_cmd1_dat {
-			pinmux = <PINMUX_GPIO112__FUNC_GPIO112>;
-			input-enable;
-			bias-pull-up;
-			drive-strength = <2>;
-		};
-	};
-
-	gk_key_sup: gk_key_sup {
-		pins_cmd0_dat {
-			pinmux = <PINMUX_GPIO111__FUNC_GPIO111>;
-			bias-disable;
-		};
-
-		pins_cmd1_dat {
-			pinmux = <PINMUX_GPIO112__FUNC_GPIO112>;
-			bias-disable;
-		};
-	};
-};
-/*GAMEKEY end*/
 
 &mt6360_pmu {
 	mt6360,intr_gpio_num = <24>; /* direct defined GPIO num */
