@@ -29,8 +29,8 @@ jobs:
       - name: Compile base MT6893 DTB and Ares overlay DTBO
         run: |
           make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j2 \
-            arch/arm64/boot/dts/mediatek/mt6893.dtb \
-            arch/arm64/boot/dts/mediatek/ares.dtbo
+            mediatek/mt6893.dtb \
+            mediatek/ares.dtbo
       - name: Verify DTB and DTBO artifacts
         run: |
           test -s arch/arm64/boot/dts/mediatek/mt6893.dtb
