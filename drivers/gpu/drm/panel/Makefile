@@ -87,4 +87,5 @@ obj-$(CONFIG_DRM_PANEL_IT6113) += ite6113.o
 obj-$(CONFIG_DRM_PANEL_NT36532_DSI_VDO_TIANMA) += panel-nt36532-dsi-vdo-tianma.o
 obj-$(CONFIG_BACKLIGHT_KTZ8866) += ktz8866.o
 obj-$(CONFIG_DRM_PANEL_NT36532_DSI_VDO_BOE_6382) += panel-nt36532-dsi-vdo-boe-6382.o
-
+obj-$(CONFIG_DRM_PANEL_K10_42_02_0A_DSC_CMD) += panel-k10-42-02-0a-dsc-cmd.o
+obj-$(CONFIG_DRM_PANEL_K10_42_02_0A_DSC_CMD) += aw2028_led.o
