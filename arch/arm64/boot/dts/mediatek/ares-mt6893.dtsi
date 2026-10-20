@@ -2,12 +2,7 @@
 this file is only for attribution of ares
 */
 #include "mediatek/xiaomi-mt6893-common.dtsi"
-#include "mediatek/cust_ares_camera.dtsi"
-
-/* Ares display panel; override the Chopin name from the common overlay. */
-&chosen {
-	atag,videolfb-lcmname = "k10_42_02_0a_dsc_cmd,lcm";
-};
+#include "mediatek/cust_mt6893_camera.dtsi"
 
 /* ARES physical game keys and Hall sensors.
  * GPIO assignments and property names follow the known-working ARES DTBO.
