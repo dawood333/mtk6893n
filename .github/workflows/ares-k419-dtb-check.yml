@@ -1,0 +1,33 @@
+name: Ares K419 DTB validation
+
+on:
+  push:
+    branches: [r]
+    paths:
+      - 'arch/arm64/boot/dts/**'
+      - 'arch/arm64/configs/ares_k419_defconfig'
+      - 'drivers/gpu/drm/panel/**'
+      - '.github/workflows/ares-k419-dtb-check.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dtb-check:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bc bison flex libssl-dev libelf-dev device-tree-compiler gcc-aarch64-linux-gnu
+      - name: Configure Ares K419
+        run: make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- ares_k419_defconfig
+      - name: Compile Ares device tree
+        run: make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j2 mediatek/ares.dtb
+        working-directory: arch/arm64/boot/dts
+      - name: Verify DTB artifact
+        run: test -s arch/arm64/boot/dts/mediatek/ares.dtb
