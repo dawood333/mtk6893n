@@ -9,6 +9,79 @@ this file is only for attribution of ares
 	atag,videolfb-lcmname = "k10_42_02_0a_dsc_cmd,lcm";
 };
 
+/* ARES physical game keys and Hall sensors.
+ * GPIO assignments and property names follow the known-working ARES DTBO.
+ */
+&pio {
+	gk_hall_act: gk_hall_active {
+		pins_cmd0_dat {
+			pinmux = <PINMUX_GPIO4__FUNC_GPIO4>;
+			input-enable;
+			bias-disable;
+		};
+		pins_cmd1_dat {
+			pinmux = <PINMUX_GPIO5__FUNC_GPIO5>;
+			input-enable;
+			bias-disable;
+		};
+	};
+
+	gk_key_act: gk_key_active {
+		pins_cmd0_dat {
+			pinmux = <PINMUX_GPIO111__FUNC_GPIO111>;
+			input-enable;
+			bias-disable;
+		};
+		pins_cmd1_dat {
+			pinmux = <PINMUX_GPIO112__FUNC_GPIO112>;
+			input-enable;
+			bias-disable;
+		};
+	};
+
+	/* Keep the four lines as inputs during suspend as well. */
+	gk_hall_sup: gk_hall_suspend {
+		pins_cmd0_dat {
+			pinmux = <PINMUX_GPIO4__FUNC_GPIO4>;
+			input-enable;
+			bias-disable;
+		};
+		pins_cmd1_dat {
+			pinmux = <PINMUX_GPIO5__FUNC_GPIO5>;
+			input-enable;
+			bias-disable;
+		};
+	};
+
+	gk_key_sup: gk_key_suspend {
+		pins_cmd0_dat {
+			pinmux = <PINMUX_GPIO111__FUNC_GPIO111>;
+			input-enable;
+			bias-disable;
+		};
+		pins_cmd1_dat {
+			pinmux = <PINMUX_GPIO112__FUNC_GPIO112>;
+			input-enable;
+			bias-disable;
+		};
+	};
+};
+
+&odm {
+	gamekey {
+		compatible = "xm,gamekey";
+		status = "okay";
+		hall_left = <&pio 4 0>;
+		key_left = <&pio 111 0>;
+		hall_right = <&pio 5 0>;
+		key_right = <&pio 112 0>;
+		debounce_time = <5>;
+		pinctrl-names = "gamekey_active", "gamekey_suspend";
+		pinctrl-0 = <&gk_hall_act &gk_key_act>;
+		pinctrl-1 = <&gk_hall_sup &gk_key_sup>;
+	};
+};
+
 &odm {
 	thermal_message: thermal-message {
 		board-sensor = "VIRTUAL-SENSOR";
