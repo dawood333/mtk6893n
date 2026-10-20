@@ -4,6 +4,11 @@ this file is only for attribution of ares
 #include "mediatek/xiaomi-mt6893-common.dtsi"
 #include "mediatek/cust_ares_camera.dtsi"
 
+/* Ares display panel; override the Chopin name from the common overlay. */
+&chosen {
+	atag,videolfb-lcmname = "k10_42_02_0a_dsc_cmd,lcm";
+};
+
 &odm {
 	thermal_message: thermal-message {
 		board-sensor = "VIRTUAL-SENSOR";
